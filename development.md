@@ -17,6 +17,12 @@
 ### Iniciar los servicios
 
     $ docker compose up -d
+
+### Para debugar
+
+    $ docker compose ps
+    $ docker compose exec -ti odoo bash
+    $ docker compose exec -ti db bash
     $ docker compose logs -f
 
 ### Para detener y limpiar
