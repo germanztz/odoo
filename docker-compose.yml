@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./local/pgdata:/var/lib/postgresql/data 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  odoo:
+    build:
+      dockerfile: Dockerfile
+    # image: odoo
+    ports:
+      - "8069:8069"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=odoo
+      - DB_PASSWORD=odoo
+      - HTTP_PORT=8069
+      - DATA_DIR=/var/lib/odoo
+      - DEV_FEATURE=all
+      - ADDONS_PATH=/mnt/extra-addons
+      - ADMIN_PASSWD=admin
+    # volumes:
+    #   - ./local:/var/lib/odoo
+    #   - ./addons:/mnt/extra-addons
+
+# docker run -d --name db \
+#     -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo -e POSTGRES_DB=postgres \
+#     -v $(pwd)/pgdata:/var/lib/postgresql/data \
+#     postgres:15
+
+# docker run --name odoo -p 8069:8069 --link db:db \
+#     -v $(pwd)/odoo/modules:/usr/lib/python3/dist-packages/odoo/modules \
+#     -t odoo
