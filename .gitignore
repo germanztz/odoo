@@ -51,4 +51,6 @@ package.json
 /man/
 /share/
 /src/
-/local/
+
+/local/odoodata/*
+/local/pgdata/*

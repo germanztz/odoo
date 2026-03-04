@@ -1,5 +1,32 @@
 # Odoo server command documentation
 
+### Prepara el entorno para docker
+
+    $ sudo apt install docker
+
+### Clona tu repositorio
+
+    $ git clone --depth 1 git@github.com:germanztz/odoo.git
+
+### Crea los directorios para persistencia de datos
+
+    $ mkdir -P ./local/odoodata
+    $ mkdir ./local/pgdata
+    $ sudo chown -R 999:999 ./local/pgdata
+
+### Iniciar los servicios
+
+    $ docker compose up -d
+    $ docker compose logs -f
+
+### Para detener y limpiar
+
+    $ docker compose down
+    $ sudo rm -Rf ./local/odoodata/*
+    $ sudo rm -Rf ./local/pgdata
+    $ mkdir ./local/pgdata
+    $ sudo chown -R 999:999 ./local/pgdata
+
 Odoo 19 command line
 
 ```cmd
