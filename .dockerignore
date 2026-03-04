@@ -1,0 +1,22 @@
+# .dockerignore
+
+# Ignore a folder (e.g., .git, node_modules, logs, etc.)
+.git
+node_modules
+__pycache__
+logs/
+*.log
+
+# Or ignore specific patterns
+.env
+.env.*
+!.env.example
+
+# Optional: ignore IDE folders
+.idea
+.vscode
+.venv
+
+local/
+docker/
+.github/
