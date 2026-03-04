@@ -2,7 +2,7 @@
 
 ### Prepara el entorno para docker
 
-    $ sudo apt install docker
+    $ sudo apt install docker-compose-v2  docker.io
 
 ### Clona tu repositorio
 
