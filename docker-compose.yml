@@ -2,15 +2,15 @@ services:
   db:
     image: postgres:15
     environment:
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=My3xTr4S3cur3U53r
+      - POSTGRES_PASSWORD=My3xTr4!S3cur39455w0rd!!
       - POSTGRES_DB=postgres
       - PGDATA=/var/lib/postgresql/data
     volumes:
       # $ sudo rm -Rf ./local/pgdata && sudo mkdir ./local/pgdata && sudo chown -Rf 999:999 ./local/pgdata
       - ./local/pgdata:/var/lib/postgresql/data 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      test: ["CMD-SHELL", "pg_isready -U My3xTr4S3cur3U53r -d postgres"]
       interval: 10s
       timeout: 5s
       retries: 5

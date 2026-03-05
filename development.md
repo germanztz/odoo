@@ -10,7 +10,7 @@
 
 ### Crea los directorios para persistencia de datos
 
-    $ mkdir -P ./local/odoodata
+    $ mkdir -p ./local/odoodata
     $ mkdir ./local/pgdata
     $ sudo chown -R 999:999 ./local/pgdata
 
